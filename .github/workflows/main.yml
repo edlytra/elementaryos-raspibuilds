@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: sudo apt install tree -y
       - run: git clone https://github.com/elementary/os
       - run: cd os && docker run --privileged -i -v /proc:/proc -v ${PWD}:/working_dir  -w /working_dir debian:latest /bin/bash -s etc/terraform-stable-azure.conf < build.sh
-      - run: cd os && ls
+      - run: cd os && tree
